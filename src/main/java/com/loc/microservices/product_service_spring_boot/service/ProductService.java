@@ -23,6 +23,7 @@ public class ProductService {
         .name(productRequest.name())
         .description(productRequest.description())
         .price(productRequest.price())
+        .skuCode(productRequest.skuCode())
         .build();
 
         productRepository.save(product);
@@ -39,7 +40,7 @@ public class ProductService {
     }
 
     private ProductResponse mapToProductResponse(Product product) {
-        return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getPrice());
+        return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getSkuCode(), product.getPrice());
     }
     
     
