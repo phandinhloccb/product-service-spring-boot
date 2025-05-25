@@ -1,11 +1,11 @@
 package com.loc.microservices.product_service_spring_boot.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.loc.microservices.product_service_spring_boot.dto.ProductRequest;
-import com.loc.microservices.product_service_spring_boot.dto.ProductResponse;
 import com.loc.microservices.product_service_spring_boot.model.Product;
 import com.loc.microservices.product_service_spring_boot.repository.ProductRepository;
 
@@ -18,32 +18,25 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public ProductResponse createProduct(ProductRequest productRequest) {
+    public Product createProduct(ProductRequest productRequest) {
         Product product = Product.builder()
-        .name(productRequest.name())
-        .description(productRequest.description())
-        .price(productRequest.price())
-        .skuCode(productRequest.skuCode())
-        .build();
+            .name(productRequest.name())
+            .description(productRequest.description())
+            .price(productRequest.price())
+            .skuCode(productRequest.skuCode())
+            .build();
 
-        productRepository.save(product);
-        log.info("Product created successfully");
-
-        return mapToProductResponse(product);
+        Product savedProduct = productRepository.save(product);
+        log.info("Product created successfully with id: {}", savedProduct.getId());
+        return savedProduct;
     }
 
-    public List<ProductResponse> getAllProducts() {
-        return productRepository.findAll()
-        .stream()
-        .map(this::mapToProductResponse)
-        .toList();
-    }
-
-    private ProductResponse mapToProductResponse(Product product) {
-        return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getSkuCode(), product.getPrice());
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
     
-    
-    
+    public Optional<Product> getProductById(String id) {
+        return productRepository.findById(id);
+    }
 }
 
