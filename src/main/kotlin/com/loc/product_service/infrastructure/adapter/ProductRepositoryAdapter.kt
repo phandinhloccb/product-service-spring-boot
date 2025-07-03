@@ -12,4 +12,9 @@ class ProductRepositoryAdapter(private val productRepository: ProductRepository)
         val savedProduct = productRepository.save(productDocument)
         return savedProduct.toProduct()
     }
+
+    override fun findAll(): List<Product> {
+        val productDocuments = productRepository.findAll()
+        return productDocuments.map { it.toProduct() }
+    }
 }

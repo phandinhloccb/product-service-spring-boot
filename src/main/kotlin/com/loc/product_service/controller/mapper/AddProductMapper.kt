@@ -21,3 +21,4 @@ fun Product.toResponse(): ProductResponse {
         price = this.price
     )
 }
+

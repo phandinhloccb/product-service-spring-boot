@@ -23,3 +23,7 @@ fun ProductDocumentEntity.toProduct(): Product {
     )
 }
 
+fun List<ProductDocumentEntity>.toProducts(): List<Product> {
+    return this.map { it.toProduct() }
+}
+
