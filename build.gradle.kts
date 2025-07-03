@@ -29,12 +29,13 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.liquibase:liquibase-core")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("io.swagger.core.v3:swagger-annotations:2.2.15")
+	implementation("io.swagger.core.v3:swagger-models:2.2.15")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-	implementation("io.swagger.core.v3:swagger-annotations:2.2.15")
-	implementation("io.swagger.core.v3:swagger-models:2.2.15")
 }
 
 // OpenAPI Generator
