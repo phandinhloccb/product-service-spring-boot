@@ -5,7 +5,9 @@ import com.loc.product_service.domain.model.Product
 import com.loc.product_service.infrastructure.mapper.toProduct
 import com.loc.product_service.infrastructure.mapper.toProductDocumentEntity
 import com.loc.product_service.infrastructure.repository.ProductRepository
+import org.springframework.stereotype.Component
 
+@Component
 class ProductRepositoryAdapter(private val productRepository: ProductRepository): ProductRepositoryPort {
     override fun addProduct(product: Product): Product {
         val productDocument = product.toProductDocumentEntity()
