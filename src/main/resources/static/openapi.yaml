@@ -12,7 +12,7 @@ servers:
   - url: http://localhost:8080
     description: Local development server
 paths:
-  /api/product:
+  /api/product/all:
     get:
       summary: Get all products
       description: Retrieve a list of all available products
@@ -26,6 +26,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProductResponse'
+  /api/product/add:
     post:
       summary: Create a new product
       description: Add a new product to the system
@@ -36,7 +37,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductRequest'
+              $ref: '#/components/schemas/AddProductRequest'
       responses:
         '201':
           description: Product created successfully
@@ -46,7 +47,7 @@ paths:
                 $ref: '#/components/schemas/ProductResponse'
 components:
   schemas:
-    ProductRequest:
+    AddProductRequest:
       type: object
       required:
         - name

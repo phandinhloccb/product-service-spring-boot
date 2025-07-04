@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: product-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: product-service
+      username: admin
+      password: password
+      authentication-database: admin
+      authentication-mechanism: SCRAM-SHA-1
+      uri: mongodb://admin:password@localhost:27017/product-service?authSource=admin
+
+server:
+  port: 8080
