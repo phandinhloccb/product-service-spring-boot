@@ -30,6 +30,9 @@ dependencies {
 	implementation("io.swagger.core.v3:swagger-annotations:2.2.15")
 	implementation("io.swagger.core.v3:swagger-models:2.2.15")
 	
+	// Micrometer Prometheus for /actuator/prometheus endpoint
+	implementation("io.micrometer:micrometer-registry-prometheus")
+    
 	// SpringDoc OpenAPI for API docs only (no UI)
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.2.0")
 

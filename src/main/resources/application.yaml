@@ -15,14 +15,45 @@ spring:
 server:
   port: 8080
 
-# SpringDoc OpenAPI Configuration - API docs only
+# Spring Boot Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus  # Explicitly include metrics and prometheus
+      base-path: ""
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+      probes:
+        enabled: true
+    metrics:
+      enabled: true  # Explicitly enable metrics
+    prometheus:
+      enabled: true  # Explicitly enable prometheus
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+    mongo:
+      enabled: true
+  server:
+    port: 8080
+  metrics:
+    export:
+      prometheus:
+        enabled: true  # Enable Prometheus metrics export
+
+# SpringDoc OpenAPI Configuration
 springdoc:
   api-docs:
     path: /v3/api-docs
     enabled: true
   swagger-ui:
     enabled: false 
-  show-actuator: false
+  show-actuator: true
   group-configs:
     - group: product-service
       paths-to-match: /api/product/**
