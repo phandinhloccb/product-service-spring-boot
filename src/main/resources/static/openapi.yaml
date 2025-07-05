@@ -19,13 +19,26 @@ paths:
       operationId: getAllProducts
       responses:
         '200':
-          description: Successful operation
+          description: List of products
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProductResponse'
+              examples:
+                products:
+                  value:
+                    - id: "507f1f77bcf86cd799439011"
+                      name: "iPhone 15 Pro"
+                      description: "Latest iPhone with titanium design"
+                      skuCode: "IPHONE15-PRO-128"
+                      price: "999.99"
+                    - id: "507f1f77bcf86cd799439012"
+                      name: "MacBook Pro"
+                      description: "Professional laptop"
+                      skuCode: "MACBOOK-PRO-16"
+                      price: "2499.00"
   /api/product/add:
     post:
       summary: Create a new product
@@ -38,6 +51,14 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AddProductRequest'
+            examples:
+              iphone:
+                summary: iPhone Example
+                value:
+                  name: "iPhone 15 Pro"
+                  description: "Latest iPhone with titanium design"
+                  skuCode: "IPHONE15-PRO-128"
+                  price: "999.99"
       responses:
         '201':
           description: Product created successfully
@@ -45,6 +66,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductResponse'
+              examples:
+                created:
+                  value:
+                    id: "507f1f77bcf86cd799439011"
+                    name: "iPhone 15 Pro"
+                    description: "Latest iPhone with titanium design"
+                    skuCode: "IPHONE15-PRO-128"
+                    price: "999.99"
 components:
   schemas:
     AddProductRequest:
@@ -57,33 +86,33 @@ components:
       properties:
         name:
           type: string
-          example: "iPhone 13"
+          example: "iPhone 15 Pro"
         description:
           type: string
-          example: "Apple iPhone 13 with 128GB storage"
+          example: "Latest iPhone with titanium design"
         skuCode:
           type: string
-          example: "IPHONE13-128"
+          example: "IPHONE15-PRO-128"
         price:
-          type: number
+          type: string
           format: decimal
-          example: 999.99
+          example: "999.99"
     ProductResponse:
       type: object
       properties:
         id:
           type: string
-          example: "60f4a5e9b3c24a1a1c9d2e4f"
+          example: "507f1f77bcf86cd799439011"
         name:
           type: string
-          example: "iPhone 13"
+          example: "iPhone 15 Pro"
         description:
           type: string
-          example: "Apple iPhone 13 with 128GB storage"
+          example: "Latest iPhone with titanium design"
         skuCode:
           type: string
-          example: "IPHONE13-128"
+          example: "IPHONE15-PRO-128"
         price:
-          type: number
+          type: string
           format: decimal
-          example: 999.99 
+          example: "999.99" 

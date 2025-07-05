@@ -14,3 +14,16 @@ spring:
 
 server:
   port: 8080
+
+# SpringDoc OpenAPI Configuration - API docs only
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    enabled: false 
+  show-actuator: false
+  group-configs:
+    - group: product-service
+      paths-to-match: /api/product/**
+      display-name: Product Service API

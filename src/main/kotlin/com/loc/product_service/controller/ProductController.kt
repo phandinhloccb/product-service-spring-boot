@@ -5,8 +5,7 @@ import com.loc.product_service.application.service.ListAllProductService
 import com.loc.product_service.controller.mapper.toProduct
 import com.loc.product_service.controller.mapper.toResponse
 import com.loc.productservice.model.AddProductRequest
-import com.loc.productservice.model.ProductRequest
-import io.micrometer.core.ipc.http.HttpSender
+import com.loc.productservice.model.ProductResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -23,7 +22,7 @@ class ProductController(
     private val listAllProductService: ListAllProductService
 ) {
     @PostMapping("/add")
-    fun addProduct(@RequestBody addProductRequest: AddProductRequest): ResponseEntity<Any> {
+    fun addProduct(@RequestBody addProductRequest: AddProductRequest): ResponseEntity<ProductResponse> {
         val result = addProductService.addProduct(addProductRequest.toProduct())
 
         return ResponseEntity
@@ -33,7 +32,7 @@ class ProductController(
     }
 
     @GetMapping("/all")
-    fun listAllProducts(): ResponseEntity<Any> {
+    fun listAllProducts(): ResponseEntity<List<ProductResponse>> {
         val result = listAllProductService.listAllProducts()
 
         return ResponseEntity
