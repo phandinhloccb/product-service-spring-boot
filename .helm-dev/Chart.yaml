@@ -1,0 +1,9 @@
+apiVersion: v2
+name: product-service
+description: A Helm chart for the product-service
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+dependencies:
+  - name: helm-template
+    version: 0.1.0
