@@ -30,11 +30,7 @@ helm-template:
     enabled: false
 
   configmap:
-    enabled: true
-    name: product-service
-    data:
-      INVENTORY_SERVICE_URL: "http://product-service.product-service.svc.cluster.local:8080"
-      SERVER_PORT: "8080"
+    enabled: false
   
   service-account:
     enabled: true
